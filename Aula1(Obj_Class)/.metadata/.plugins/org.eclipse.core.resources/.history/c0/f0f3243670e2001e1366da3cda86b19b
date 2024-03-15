@@ -1,0 +1,55 @@
+package model;
+
+import java.time.LocalDate;
+
+public class Pessoa {
+	
+	private String nome;
+	private LocalDate dataNascimento;
+	private String profissao;
+	
+	public Pessoa() {
+		super();
+	}
+	
+	public String getNome() {
+		return this.nome;
+	}
+	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	
+	public LocalDate getDataNascimento() {
+		return this.dataNascimento;
+	}
+	
+	public void setDataNascimento(int dia, int mes, int ano) {
+		LocalDate l =  LocalDate.of(ano, mes, dia);
+		this.dataNascimento = l;
+	}
+	
+	//ainda não sei como fazer a inclusão da parte attribute
+	
+	public String getProfissao() {
+		return this.profissao;
+	}
+	
+	public void setProfissao(String profissao) {
+		this.profissao = profissao;
+	}
+	
+	
+	public void getIdade() {
+		LocalDate hoje = LocalDate.now();
+		
+		int idade = hoje.getYear() - dataNascimento.getYear();
+		
+		if(idade > 150) {
+			System.out.println("Você provavelmente já morreu");
+		}else if(idade < 0) {
+			System.out.println("Você é novo demais para o programa");
+		}
+	}
+}

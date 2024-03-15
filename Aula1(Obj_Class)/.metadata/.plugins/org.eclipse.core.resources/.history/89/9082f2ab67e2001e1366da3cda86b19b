@@ -1,0 +1,14 @@
+package view;
+
+import model.ContaBancaria;
+
+public class Principal {
+
+	public static void main(String[] args) {
+
+		ContaBancaria conta = new ContaBancaria();
+		
+		
+	}
+
+}

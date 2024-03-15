@@ -1,0 +1,19 @@
+package view;
+
+import model.Pessoa;
+
+public class Principal {
+
+	public static void main(String[] args) {
+		Pessoa pessoa1 = new Pessoa();
+		Pessoa pessoa2 = new Pessoa();
+		Pessoa pessoa3 = new Pessoa();
+		
+		
+		pessoa1.setNome("Sandra");
+		pessoa1.setProfissao("Agiota");
+		
+		
+	}
+
+}

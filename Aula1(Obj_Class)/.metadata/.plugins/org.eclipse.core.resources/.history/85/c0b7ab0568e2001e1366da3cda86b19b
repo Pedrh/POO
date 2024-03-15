@@ -1,0 +1,24 @@
+package model;
+
+public class ContaBancaria {
+
+	public int numeroConta;
+	public String nome;
+	public double saldo;
+	
+	public ContaBancaria() {
+		super();
+	}
+	
+	public void realizaDeposito(double valor) {
+		saldo = saldo + valor;
+		
+		System.out.println("Deposito realizado no valor de " + valor + "\n\rSaldo final: " + saldo);
+	}
+	
+	public void realizaSaque(double valor) {
+		saldo = saldo - valor;
+		
+		System.out.println("Saque realizado no valor de " + valor + "\n\r Saldo final: " + saldo);
+	}
+}

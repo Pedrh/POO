@@ -1,0 +1,20 @@
+package view;
+
+import model.Produto;
+
+public class Principal {
+
+	public static void main(String[] args) {
+
+		Produto produto = new  Produto();
+		Produto produto2 = new  Produto();
+		
+		produto.setNome("Chocolate");
+		produto.setPreco(3);
+		produto.setQtdEstoque(1000);
+		
+		produto2.setNome("Shampoo");
+		
+	}
+
+}

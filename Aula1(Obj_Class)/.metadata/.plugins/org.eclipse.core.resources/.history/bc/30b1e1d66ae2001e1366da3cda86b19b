@@ -1,0 +1,15 @@
+package model;
+
+public class Produto {
+
+	private String nome;
+	private float preco;
+	private int qtdEstoque;
+	
+	
+	public Produto() {
+		super();
+	}
+	
+	
+}

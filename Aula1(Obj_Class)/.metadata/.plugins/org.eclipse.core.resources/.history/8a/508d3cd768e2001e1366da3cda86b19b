@@ -1,0 +1,17 @@
+package model;
+
+public class Funcionario {
+	
+	private String nome;
+	private double salario;
+	private String cargo;
+	
+	
+	public Funcionario() {
+		super();
+	}
+	
+	public String getNome() {
+		return this.nome;
+	}
+}
