@@ -1,2 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="model.Ingresso"/>
+    <fullyQualifiedTypeName name="model.IngressoVip"/>
+    <fullyQualifiedTypeName name="model.Professor"/>
+    <fullyQualifiedTypeName name="model.ProfessorHorista"/>
+    <fullyQualifiedTypeName name="model.ProfessorTitular"/>
+</qualifiedTypeNameHistroy>
