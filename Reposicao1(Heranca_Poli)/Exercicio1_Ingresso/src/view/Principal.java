@@ -9,12 +9,12 @@ public class Principal {
 		Ingresso ingresso1 = new Ingresso();
 		
 		ingresso1.setCodigo("12345");
-		ingresso1.setvalor(100);
+		ingresso1.setValor(100);
 		
 		IngressoVip ingressoV = new IngressoVip();
 		
 		ingressoV.setCodigo("12345");
-		ingressoV.setvalor(100);
+		ingressoV.setValor(100);
 		ingressoV.setCargo("Banqueiro");
 		
 		
