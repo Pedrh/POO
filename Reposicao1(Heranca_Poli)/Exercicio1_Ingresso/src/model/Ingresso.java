@@ -21,7 +21,7 @@ public class Ingresso {
 		return this.valor;
 	}
 	
-	public void setvalor(float valor) {
+	public void setValor(float valor) {
 		this.valor = valor;
 	}
 	
