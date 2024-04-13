@@ -4,6 +4,10 @@ import model.Funcionario;
 import model.Temporario;
 
 public class ContratacaoTemporario extends ContratacaoFactory {
+	public ContratacaoTemporario() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public Funcionario iniciarContratacao() {
