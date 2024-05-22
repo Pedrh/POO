@@ -46,7 +46,7 @@ public class TimeDao implements ICrud<Time> {
 	@Override
 	public void excluir(Time t) throws ClassNotFoundException, SQLException {
 		Connection c = gDao.getConnection();
-		String mySql = "DELETE time WHERE codigo = ?";
+		String mySql = "DELETE FROM time WHERE codigo = ?";
 		PreparedStatement ps = c.prepareStatement(mySql);
 		ps.setInt(1, t.getCodigo());
 		ps.execute();

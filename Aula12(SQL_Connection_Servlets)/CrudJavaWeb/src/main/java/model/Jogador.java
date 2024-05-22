@@ -1,7 +1,6 @@
 package model;
 
-import java.sql.Date;
-
+import java.time.LocalDate;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +10,7 @@ public class Jogador {
 
 	private int id;
 	private String nome;
-	private Date dataNasc;
+	private LocalDate dataNasc;
 	private float altura;
 	private float peso;
 	private Time time;

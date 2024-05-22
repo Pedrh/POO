@@ -1,11 +1,10 @@
 package controller;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -72,7 +71,7 @@ public class JogadorServlet extends HttpServlet {
 			
 			if(cmd.contains("Cadastrar") || cmd.contains("Alterar")) {
 				j.setNome(nome);
-				j.setDataNasc(tranformarData(dataNasc));
+				j.setDataNasc(LocalDate.parse(dataNasc));
 				j.setAltura(Float.parseFloat(altura));
 				j.setPeso(Float.parseFloat(peso));
 				Time t = new Time();
@@ -98,7 +97,7 @@ public class JogadorServlet extends HttpServlet {
 			if(cmd.contains("Buscar")) {
 				j = buscarJogador(j);
 			} 
-			if(cmd.contains("Consultar")){
+			if(cmd.contains("Listar")){
 				jogadores = listarJogadores();
 			}
 
@@ -119,11 +118,6 @@ public class JogadorServlet extends HttpServlet {
 
 	}
 
-	private Date tranformarData(String dataNasc) {
-		long dataT = Long.parseLong(dataNasc.toString()); // isso dá erro!!!
-		Date data = new Date(dataT);
-		return data;
-	}
 
 	private void cadastrarJogador(Jogador j) throws SQLException, ClassNotFoundException{
 		GenericDao gDao = new GenericDao();

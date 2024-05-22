@@ -25,7 +25,7 @@ public class JogadorDao implements ICrud<Jogador>{
 		PreparedStatement ps = c.prepareStatement(mySql);
 		ps.setInt(1, j.getId());
 		ps.setString(2, j.getNome());
-		ps.setDate(3, j.getDataNasc());
+		ps.setDate(3, java.sql.Date.valueOf(j.getDataNasc()));
 		ps.setFloat(4, j.getAltura());
 		ps.setFloat(5, j.getPeso());
 		ps.setInt(6, j.getTime().getCodigo());
@@ -37,11 +37,14 @@ public class JogadorDao implements ICrud<Jogador>{
 	@Override
 	public void atualizar(Jogador j) throws ClassNotFoundException, SQLException {
 		Connection c = gDao.getConnection();
-		String mySql = "UPDATE jogador SET nome = ?, codigoTime = ?, WHERE id = ?";
+		String mySql = "UPDATE jogador SET nome = ?, dataNasc = ?, altura = ?, peso = ?, timeCodigo = ? WHERE id=?";
 		PreparedStatement ps = c.prepareStatement(mySql);
 		ps.setString(1, j.getNome());
-		ps.setInt(2, j.getTime().getCodigo());
-		ps.setInt(3, j.getId());
+		ps.setDate(2, java.sql.Date.valueOf(j.getDataNasc()));
+		ps.setFloat(3, j.getAltura());
+		ps.setFloat(4, j.getPeso());
+		ps.setInt(5, j.getTime().getCodigo());
+		ps.setInt(6, j.getId());
 		ps.execute();
 		ps.close();
 		c.close();
@@ -50,7 +53,7 @@ public class JogadorDao implements ICrud<Jogador>{
 	@Override
 	public void excluir(Jogador j) throws ClassNotFoundException, SQLException {
 		Connection c = gDao.getConnection();
-		String mySql = "DELETE jogador WHERE id = ?";
+		String mySql = "DELETE FROM jogador WHERE id = ?";
 		PreparedStatement ps = c.prepareStatement(mySql);
 		ps.setInt(1, j.getId());
 		ps.execute();
@@ -63,9 +66,11 @@ public class JogadorDao implements ICrud<Jogador>{
 		Connection c = gDao.getConnection();
 		StringBuffer mySql = new StringBuffer();
 		mySql.append("SELECT j.id AS codJog, j.nome AS nomeJog, ");
+		mySql.append("j.dataNasc AS dataNasc, j.altura AS alturaJog, ");
+		mySql.append("j.peso AS pesoJog,  ");
 		mySql.append("t.codigo AS codTime, t.nome AS nomeTime, t.cidade AS cidadeTime ");
 		mySql.append("FROM time t, jogador j ");
-		mySql.append("WHERE t.codigo = j.codigoTime ");
+		mySql.append("WHERE t.codigo = j.timeCodigo ");
 		mySql.append("AND j.id = ?");
 		PreparedStatement ps = c.prepareStatement(mySql.toString());
 		ps.setInt(1, j.getId());
@@ -78,6 +83,9 @@ public class JogadorDao implements ICrud<Jogador>{
 			
 			j.setId(rs.getInt("codJog"));
 			j.setNome(rs.getString("nomeJog"));
+			j.setDataNasc(rs.getDate("dataNasc").toLocalDate());
+			j.setAltura(rs.getFloat("alturaJog"));
+			j.setPeso(rs.getFloat("pesoJog"));
 			j.setTime(t);
 		}
 		rs.close();
@@ -92,9 +100,11 @@ public class JogadorDao implements ICrud<Jogador>{
 		Connection c = gDao.getConnection();
 		StringBuffer mySql = new StringBuffer();
 		mySql.append("SELECT j.id AS codJog, j.nome AS nomeJog, ");
+		mySql.append("j.dataNasc AS dataNasc, j.altura AS alturaJog, ");
+		mySql.append("j.peso AS pesoJog,  ");
 		mySql.append("t.codigo AS codTime, t.nome AS nomeTime, t.cidade AS cidadeTime ");
 		mySql.append("FROM time t, jogador j ");
-		mySql.append("WHERE t.codigo = j.codigoTime ");
+		mySql.append("WHERE t.codigo = j.timeCodigo ");
 		PreparedStatement ps = c.prepareStatement(mySql.toString());
 		ResultSet rs = ps.executeQuery();
 		while(rs.next()) {
@@ -106,6 +116,9 @@ public class JogadorDao implements ICrud<Jogador>{
 			Jogador j = new Jogador();
 			j.setId(rs.getInt("codJog"));
 			j.setNome(rs.getString("nomeJog"));
+			j.setDataNasc(rs.getDate("dataNasc").toLocalDate());
+			j.setAltura(rs.getFloat("alturaJog"));
+			j.setPeso(rs.getFloat("pesoJog"));
 			j.setTime(t);
 			
 			jogadores.add(j);

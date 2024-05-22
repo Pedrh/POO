@@ -22,7 +22,8 @@
 				<tr>
 					<td colspan="3">
 						<input class="input_data_id" type="number" min="0" step="1" id="codigo"
-						name="codigo" placeholder="Codigo">
+						name="codigo" placeholder="Codigo"
+						value='<c:out value="${jogador.id }"></c:out>'>
 					</td>
 					<td>
 						<input type="submit" id="botao" name="botao" value="Buscar">
@@ -30,22 +31,26 @@
 				</tr>
 				<tr>
 					<td colspan="4">
-					<input class="input_data" type="text" id="nome" name="nome" placeholder="Nome">
+					<input class="input_data" type="text" id="nome" name="nome" placeholder="Nome"
+					value='<c:out value="${jogador.nome }"></c:out>'>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="4">
-					<input class="input_data" type="date" id="dataNasc" name="dataNasc">
+					<input class="input_data" type="date" id="dataNasc" name="dataNasc"
+					value='<c:out value="${jogador.dataNasc }"></c:out>'>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="4">
-					<input class="input_data" type="number" min="0" step="0.01" id="altura" name="altura" placeholder="Altura">
+					<input class="input_data" type="number" min="0" step="0.01" id="altura" name="altura" placeholder="Altura"
+					value='<c:out value="${jogador.altura }"></c:out>'>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="4">
-					<input class="input_data" type="number" min="0" step="0.1" id="peso" name="peso" placeholder="Peso">
+					<input class="input_data" type="number" min="0" step="0.01" id="peso" name="peso" placeholder="Peso"
+					value='<c:out value="${jogador.peso }"></c:out>'>
 					</td>
 				</tr>
 				<tr>
@@ -53,9 +58,16 @@
 					<select class="input_data" id="time" name="time"> 
 						<option value="0">Escolha um time</option>
 						<c:forEach var="t" items="${times }">
-							<option value="${t.codigo }">
-								<c:out value="${t }" />
-							</option>
+							<c:if test="${(empty jogador) || (t.codigo ne jogador.time.codigo) }">
+								<option value="${t.codigo }">
+									<c:out value="${t }" />
+								</option>
+							</c:if>
+							<c:if test="${t.codigo eq jogador.time.codigo }">
+								<option value="${t.codigo }" selected="selected">
+									<c:out value="${t }" />
+								</option>
+							</c:if>
 						 </c:forEach>
 					</select>
 					</td>
@@ -71,7 +83,7 @@
 						<input type="submit" id="botao" name="botao" value="Excluir">
 					</td>
 					<td>
-						<input type="submit" id="botao" name="botao" value="Consultar">
+						<input type="submit" id="botao" name="botao" value="Listar">
 					</td>
 				</tr>
 			</table>
@@ -95,9 +107,12 @@
 			<table class="table_round"> 
 				<thead>
 					<tr>
-						<th>Codigo</th>
-						<th>Nome</th>
-						<th>Time</th>
+						<th>Codigo </th>
+						<th>Nome </th>
+						<th>Data Nascimento </th>
+						<th>Altura </th>
+						<th>Peso </th>
+						<th>Time </th>
 					</tr>
 				</thead>
 				<tbody>
@@ -105,6 +120,9 @@
 						<tr>
 							<td><c:out value="${j.id }"></c:out> </td>
 							<td><c:out value="${j.nome }"></c:out> </td>
+							<td><c:out value="${j.dataNasc }"></c:out> </td>
+							<td><c:out value="${j.altura }"></c:out> </td>
+							<td><c:out value="${j.peso }"></c:out> </td>
 							<td><c:out value="${j.time }"></c:out> </td>
 						</tr>
 					</c:forEach>
