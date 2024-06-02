@@ -1,0 +1,73 @@
+mysql> source c:/TEMP/crudBiblioteca_script.sql;
+Query OK, 1 row affected (0.01 sec)
+
+Database changed
+Query OK, 0 rows affected, 1 warning (0.03 sec)
+
+Query OK, 0 rows affected, 2 warnings (0.02 sec)
+
+Query OK, 0 rows affected, 2 warnings (0.03 sec)
+
+Query OK, 0 rows affected, 1 warning (0.03 sec)
+
+Query OK, 0 rows affected, 2 warnings (0.04 sec)
+
++--------------------------+
+| Tables_in_crudbiblioteca |
++--------------------------+
+| aluguel                  |
+| aluno                    |
+| exemplar                 |
+| livro                    |
+| revista                  |
++--------------------------+
+5 rows in set (0.00 sec)
+
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| ra    | int          | NO   | PRI | NULL    |       |
+| nome  | varchar(100) | YES  |     | NULL    |       |
+| email | varchar(50)  | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| codigo     | int         | NO   | PRI | NULL    |       |
+| nome       | varchar(50) | YES  |     | NULL    |       |
+| qtdPaginas | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
++--------+---------+------+-----+---------+-------+
+| Field  | Type    | Null | Key | Default | Extra |
++--------+---------+------+-----+---------+-------+
+| codigo | int     | NO   | PRI | NULL    |       |
+| issn   | char(8) | YES  |     | NULL    |       |
++--------+---------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
++--------+----------+------+-----+---------+-------+
+| Field  | Type     | Null | Key | Default | Extra |
++--------+----------+------+-----+---------+-------+
+| codigo | int      | NO   | PRI | NULL    |       |
+| isbn   | char(13) | YES  |     | NULL    |       |
+| edicao | int      | YES  |     | NULL    |       |
++--------+----------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
++---------------+------+------+-----+---------+-------+
+| Field         | Type | Null | Key | Default | Extra |
++---------------+------+------+-----+---------+-------+
+| codigo        | int  | NO   | PRI | NULL    |       |
+| alunoRa       | int  | NO   | PRI | NULL    |       |
+| dataRetirada  | date | NO   | PRI | NULL    |       |
+| dataDevolucao | date | YES  |     | NULL    |       |
++---------------+------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> /**/
+    -> /* Mostras as tabelas criadas na seguinte ordem: aluno, exemplar, revista, livro e aluguel*/
+    -> exit
