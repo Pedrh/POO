@@ -1,0 +1,49 @@
+mysql> create databse crud;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'databse crud' at line 1
+mysql> create database crud;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use crud;
+Database changed
+mysql> create table time(
+    -> codigo integer primary key,
+    -> nome varchar(50),
+    -> cidade varchar(80)
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> describe time;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| codigo | int         | NO   | PRI | NULL    |       |
+| nome   | varchar(50) | YES  |     | NULL    |       |
+| cidade | varchar(80) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> create table jogador(
+    -> id integer primary key,
+    -> nome varchar(100),
+    -> dataNasc date,
+    -> altura decimal(4,2),
+    -> peso decimal(4,1),
+    -> timeCodigo integer,
+    -> foreign key (timeCodigo) references time(codigo)
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> describe jogador;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| id         | int          | NO   | PRI | NULL    |       |
+| nome       | varchar(100) | YES  |     | NULL    |       |
+| dataNasc   | date         | YES  |     | NULL    |       |
+| altura     | decimal(4,2) | YES  |     | NULL    |       |
+| peso       | decimal(4,1) | YES  |     | NULL    |       |
+| timeCodigo | int          | YES  | MUL | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+6 rows in set (0.02 sec)
+
+mysql> exit
