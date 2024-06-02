@@ -1,20 +1,20 @@
-	package persistence;
+package persistence;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class GenericDao {
-
+	
 	private Connection c;
 	
 	public GenericDao() {
 		super();
 	}
 	
-	public Connection getConnection() throws ClassNotFoundException, SQLException{
+	public Connection getConnection() throws SQLException, ClassNotFoundException{
 		String hostName = "localhost";
-		String dbName = "crud";
+		String dbName = "crudBiblioteca";
 		String user = "root";
 		String senha = "P4$sw0rd";
 		
@@ -24,5 +24,4 @@ public class GenericDao {
 				);
 		return c;
 	}
-
 }
